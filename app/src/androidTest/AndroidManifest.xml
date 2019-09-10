@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.android.architecture.blueprints.todoapp.test">
+
+    <uses-sdk
+        tools:overrideLibrary="androidx.test.uiautomator" />
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:targetPackage="com.example.android.architecture.blueprints.todoapp" />
+
+</manifest>
