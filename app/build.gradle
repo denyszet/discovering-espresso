@@ -88,10 +88,10 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha10'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha04'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.2.0'
+    implementation "androidx.test.espresso:espresso-idling-resource:$rootProject.espressoVersionAndroidX"
     implementation ("com.google.guava:guava:$rootProject.guavaVersion") {
         exclude group: "org.checkerframework", module: "checker-compat-qual"
         exclude group: "com.google.errorprone", module: "error_prone_annotations"
@@ -101,7 +101,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.vectordrawable:vectordrawable:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
 
     // AndroidX Test Orchestrator
@@ -125,10 +125,9 @@ dependencies {
     androidTestImplementation "com.google.guava:guava:$rootProject.guavaVersion"
 
     // Accessibility and UI Automator dependencies
-    androidTestImplementation ("com.google.android.apps.common.testing.accessibility.framework:accessibility-test-framework:$rootProject.accessibilityFramework")
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
 
-    implementation "com.squareup.picasso:picasso:2.5.2"
+    implementation "com.squareup.picasso:picasso:2.71828"
 
     // ConditionalWatcher dependency
     androidTestImplementation "com.azimolabs.conditionwatcher:conditionwatcher:0.2"
