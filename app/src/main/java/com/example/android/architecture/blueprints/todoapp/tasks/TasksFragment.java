@@ -39,7 +39,6 @@ import com.example.android.architecture.blueprints.todoapp.addedittask.AddEditTa
 import com.example.android.architecture.blueprints.todoapp.data.Task;
 import com.example.android.architecture.blueprints.todoapp.taskdetail.TaskDetailActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -459,6 +458,7 @@ public class TasksFragment extends Fragment implements TasksContract.View {
                 if (task.isCompleted()) {
                     itemHolder.setBackgroundDrawable(itemHolder.getContext()
                             .getResources().getDrawable(R.drawable.list_completed_touch_feedback));
+                    itemHolder.setSelected(true);
                 } else {
                     itemHolder.setBackgroundDrawable(itemHolder.getContext()
                             .getResources().getDrawable(R.drawable.touch_feedback));

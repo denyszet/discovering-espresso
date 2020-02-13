@@ -14,8 +14,8 @@
   ~ limitations under the License.
   -->
 <resources>
-
-    <!-- Base application theme. --><style name="AppTheme" parent="Base.AppTheme" />
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.AppTheme" />
 
     <style name="AppTheme.OverlapSystemBar" parent="Base.AppTheme" />
 

@@ -7,7 +7,6 @@
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
     <EditTextPreference
-        android:capitalize="words"
         android:hint="@string/name_hint"
         android:inputType="textEmailAddress"
         android:key="email_edit_text"

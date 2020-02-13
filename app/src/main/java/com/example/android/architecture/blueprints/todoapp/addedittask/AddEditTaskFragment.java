@@ -93,7 +93,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
         super.onActivityCreated(savedInstanceState);
 
         FloatingActionButton fab =
-                (FloatingActionButton) getActivity().findViewById(R.id.fab_edit_task_done);
+                (FloatingActionButton) requireActivity().findViewById(R.id.fab_edit_task_done);
         fab.setImageResource(R.drawable.ic_done);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,11 +112,15 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.addtask_frag, container, false);
-        contentView = getActivity().getWindow().getDecorView().findViewById(android.R.id.content);
-        mTitle = (TextView) root.findViewById(R.id.add_task_title);
+        contentView = requireActivity().getWindow().getDecorView().findViewById(android.R.id.content);
+
+        mTitle = root.findViewById(R.id.add_task_title);
+        mTitle.setTag(R.string.title_hint, requireContext().getResources().getString(R.string.title_hint));
         mTitle.requestFocus();
-        //mTitle.getAccessibilityNodeProvider().createAccessibilityNodeInfo()
-        mDescription = (TextView) root.findViewById(R.id.add_task_description);
+
+        mDescription = root.findViewById(R.id.add_task_description);
+        mDescription.setTag(R.string.description_hint, requireContext().getResources().getString(R.string.description_hint));
+
         imageView = (ImageView) root.findViewById(R.id.imageView);
         ImageButton imageButton = (ImageButton) root.findViewById(R.id.getImage);
         imageButton.setOnClickListener(new View.OnClickListener(){
@@ -149,7 +153,7 @@ public class AddEditTaskFragment extends Fragment implements AddEditTaskContract
     private void showCameraPreview() {
         // BEGIN_INCLUDE(startCamera)
         // Check if the Camera permission has been granted
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA)
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
             // Permission is already available, start camera preview
             Snackbar.make(contentView,

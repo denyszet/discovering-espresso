@@ -18,6 +18,9 @@ package com.example.android.architecture.blueprints.todoapp.statistics;
 
 import com.example.android.architecture.blueprints.todoapp.BasePresenter;
 import com.example.android.architecture.blueprints.todoapp.BaseView;
+import com.example.android.architecture.blueprints.todoapp.data.Task;
+
+import java.util.List;
 
 /**
  * This specifies the contract between the view and the presenter.
@@ -29,6 +32,8 @@ public interface StatisticsContract {
         void setProgressIndicator(boolean active);
 
         void showStatistics(int numberOfIncompleteTasks, int numberOfCompletedTasks);
+
+        void showSpinner(List<Task> tasks);
 
         void showLoadingStatisticsError();
 

@@ -63,6 +63,8 @@ public class StatisticsPresenter implements StatisticsContract.Presenter {
                 int activeTasks = 0;
                 int completedTasks = 0;
 
+                mStatisticsView.showSpinner(tasks);
+
                 // This callback may be called twice, once for the cache and once for loading
                 // the data from the server API, so we check before decrementing, otherwise
                 // it throws "Counter has been corrupted!" exception.

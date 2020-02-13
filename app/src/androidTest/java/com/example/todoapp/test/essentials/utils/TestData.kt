@@ -1,12 +1,7 @@
 package com.example.todoapp.test.essentials.utils;
 
-object TestData {
+object ToDoItem {
 
-    fun getToDoTitle(): String {
-        return "item " + System.currentTimeMillis();
-    }
-
-    fun getToDoDescription(): String {
-        return "description " + System.currentTimeMillis();
-    }
+    val title get() = "item " + System.currentTimeMillis()
+    val description get() = "description " + System.currentTimeMillis()
 }

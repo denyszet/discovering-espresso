@@ -35,6 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/title_hint"
+            android:tag="@string/title_hint"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:inputType="text" />
@@ -45,6 +46,7 @@
             android:layout_height="300dp"
             android:gravity="top"
             android:hint="@string/description_hint"
+            android:tag="@string/description_hint"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

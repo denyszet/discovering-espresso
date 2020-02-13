@@ -18,15 +18,22 @@ package com.example.android.architecture.blueprints.todoapp.statistics;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.android.architecture.blueprints.todoapp.R;
+import com.example.android.architecture.blueprints.todoapp.data.Task;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,8 +50,12 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
     private TextView seekBarTextView;
     private SeekBar seekBar;
     private String progressText;
-
+    private Switch dialogSwitch;
+    private Switch spinnerSwitch;
+    private Spinner spinner;
     private StatisticsContract.Presenter mPresenter;
+    private int activeTasks = 0;
+    private int completedTasks = 0;
 
     public static StatisticsFragment newInstance() {
         return new StatisticsFragment();
@@ -60,35 +71,57 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.statistics_frag, container, false);
-        mStatisticsTV = (TextView) root.findViewById(R.id.statistics);
-        seekBarTextView = (TextView) root.findViewById(R.id.seekBarTextView);
-        seekBar = (SeekBar) root.findViewById(R.id.simpleSeekBar);
+        mStatisticsTV = root.findViewById(R.id.statistics);
+        seekBarTextView = root.findViewById(R.id.seekBarTextView);
+        seekBar = root.findViewById(R.id.simpleSeekBar);
+        spinner = root.findViewById(R.id.statisticsSpinner);
+        dialogSwitch = root.findViewById(R.id.statisticsDialogSwitch);
+        spinnerSwitch = root.findViewById(R.id.statisticsSpinnerSwitch);
         progressText = getString(R.string.statisticsProgress);
         seekBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener()
-                {
+                new SeekBar.OnSeekBarChangeListener() {
                     @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {}
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                    }
 
                     @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {}
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                    }
 
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress,
-                                                  boolean fromUser){
+                                                  boolean fromUser) {
                         seekBarTextView.setText(String.format(progressText + " %d", seekBar.getProgress()));
 
                     }
                 }
         );
-
+        dialogSwitch.setOnCheckedChangeListener(
+                new Switch.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (dialogSwitch.isChecked()) {
+                            showDialogWithDelay();
+                        }
+                    }
+                }
+        );
+        spinnerSwitch.setOnCheckedChangeListener(
+                new Switch.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (spinnerSwitch.isChecked()) {
+                            spinner.setEnabled(true);
+                        } else {
+                            spinner.setEnabled(false);
+                        }
+                    }
+        });
         seekBar.setMax(50);
         seekBar.setMin(0);
         seekBar.setProgress(0);
-
-
         seekBarTextView.setText(String.format(progressText + " %d", 0));
-        showDialogWithDelay();
+        spinner.setEnabled(false);
         return root;
     }
 
@@ -96,6 +129,13 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
     public void onResume() {
         super.onResume();
         mPresenter.start();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //Save the fragment's state here
     }
 
     @Override
@@ -109,6 +149,8 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
 
     @Override
     public void showStatistics(int numberOfIncompleteTasks, int numberOfCompletedTasks) {
+        activeTasks = numberOfIncompleteTasks;
+        completedTasks = numberOfCompletedTasks;
         if (numberOfCompletedTasks == 0 && numberOfIncompleteTasks == 0) {
             mStatisticsTV.setText(getResources().getString(R.string.statistics_no_tasks));
         } else {
@@ -116,7 +158,26 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
                     + numberOfIncompleteTasks + "\n" + getResources().getString(
                     R.string.statistics_completed_tasks) + " " + numberOfCompletedTasks;
             mStatisticsTV.setText(displayString);
+            seekBar.setProgress(numberOfCompletedTasks);
         }
+    }
+
+    @Override
+    public void showSpinner(List<Task> tasks) {
+        List<String> tasksList = new ArrayList<>();
+        tasksList.add(getResources().getString(R.string.statistics_spinner_hint));
+        if (tasks.size() > 0) {
+            for (int i = 0; i < tasks.size(); i++) {
+                tasksList.add(tasks.get(i).getTitle());
+            }
+        }
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                tasksList
+        );
+        spinner.setAdapter(adapter);
     }
 
     @Override
@@ -129,15 +190,11 @@ public class StatisticsFragment extends Fragment implements StatisticsContract.V
         return isAdded();
     }
 
-    private void showDialogWithDelay(){
+    private void showDialogWithDelay() {
         AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(getActivity());
-        } else {
-            builder = new AlertDialog.Builder(getActivity());
-        }
-        builder.setTitle("Alert dialog")
-                .setMessage("Dismiss me silently.")
+        builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Statistics alert dialog")
+                .setMessage("Active tasks: " + activeTasks + ", completed tasks: " + completedTasks + ".")
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // do nothing - test sample

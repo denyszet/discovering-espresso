@@ -161,7 +161,6 @@ public class TasksRepository implements TasksDataSource {
         checkNotNull(task);
         mTasksRemoteDataSource.activateTask(task);
         mTasksLocalDataSource.activateTask(task);
-
         Task activeTask = new Task(task.getTitle(), task.getDescription(), task.getId(), task.getImage());
 
         // Do in memory cache update to keep the app UI up to date

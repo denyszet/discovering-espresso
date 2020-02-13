@@ -1,50 +1,33 @@
 # Discovering Espresso for Android
 
-A sample TO-DO application project forked from the [googlesamples android-architecture](https://github.com/googlesamples/android-architecture/tree/master) and modified in a way to show you most of the Espresso use cases.
+The TO-DO application project based on [googlesamples android-architecture](https://github.com/googlesamples/android-architecture/tree/master) and modified in a way to show you the most of the Espresso for Android use cases.
 
-### Content:
-#### [chapter1](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter1)
-Explains how to identify Android application UI elements, perform actions, assertions and apply matchers to them.
+****[lesson_01](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_01_locating_ui_elements)**** - Inspecting app UI and locating UI elements with Layout Inspector and Android Device Monitor tools.
 
-#### [chapter2](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter2)
-Contains more advanced examples of how to implement custom ViewAction, including clicks and swiping actions; ViewMatcher, such as: matching complex views, RecyclerView matchers or Drawable matchers. It will be shown how to use custom actions and matchers, implement custom FailureHandler.
+****[lesson_02](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_02_view_matchers)**** - Understanding ViewMatchers concept.
 
-#### [chapter3](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter3)
-Is about migrating tests written in Java to Kotlin. migrating existing Espresso Java tests to Kotlin, provides an example of creating Espresso DSL.
+****[lesson_03](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_03_view_actions)**** - Basic ViewActions usage.
 
-#### [chapter4](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter4)
-Explains how to handle application network requests or long-lasting operations during test execution with the help of IdlingResource interface. Provides an example about ConditionalWatcher as an alternative to IdlingResource.
+****[lesson_04](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_04_hamcrest_matchers)**** - Getting familiar with HamcrestMatchers.
 
-#### [chapter5](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter5)
-Shows IntentMatchers usage inside the application under test as well as possibility to stub external intents and provide back extras. Contains an example of external intent stubbing that selects an image from the photo gallery.
+****[lesson_05](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_05_device_setup)**** - Preparing test device for the test run.
 
-#### [chapter6](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter6)
-Gives an overview about testing WebViews inside application under test. Implemented WebViews will showcase different UI elements that Espresso-Web API is able to operate on. The Espresso-Web cheat sheet is also the part of this chapter content and is available under TODO.
+****[lesson_06](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_06_data_interaction)**** - DataInteraction and where it is used.
 
-#### [chapter7](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter7)
-Current chapter unleashes the topic of how to test application accessibility using Espresso for Android. It raises awareness about the importance of Accessibility testing and gives an overview of manual tools that can be used to test application accessibility.
+****[lesson_07](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_07_recyclerview_actions)**** - Acting on RecyclerView with RecyclerViewActions.
 
-#### [chapter8](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter8)
-Shows one of the most powerful test automation setups for Android, which combines Espresso test framework together with UI Automator testing tool. Contains the examples of how to test notifications or operate on third party apps during Espresso tests execution.
+****[lesson_08](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_08_espresso_uiautomator)**** - Using UI Automator standalone or in combination with Espresso. UI Automator cheat sheet.
 
-#### [chapter9](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter9)
-Explains different ways of how we can deal with system permission request dialogs.
+****[lesson_09](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_09_handling_permissions)**** - Handling runtime permissions.
 
-#### [chapter10](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter10)
-Demonstrates how to set device in test friendly state to reduce test flakiness. Contains test examples generated by Espresso Test Recorder.
+****[lesson_10](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_10_test_recorder)**** - Record Espresso tests with Test Recorder.
 
-#### [chapter11](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter11)
-Shows how to apply Screen Object (the same as Page Object) architecture approach in Android test project which allows to reduce maintenance effort spent on test maintenance.
+****[lesson_11](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_11_kotlin_espressodsl)**** - Creating Espresso Domain Specific Language (DSL).
 
-#### [chapter12](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter12)
-Contains examples of how to apply Testing Robot Pattern which splits the test implementation from the business logic to Espresso UI tests.
+****[lesson_12](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_12_espresso_web)**** - Testing WebView. EspressoWeb cheat sheet.
 
-#### [chapter13](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter13)
-Gives an example of how to implement supervised pseudo monkey tests using Espresso and UI Automator which can be applicable for applications you have access to the source code to and for the third-party applications.
+****[lesson_13](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_13_running_tests)**** - Running single and multiple tests.
 
-#### [chapter14](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter14)
-Demonstrates how to migrate the test code from Android Support to AndroidX Test library and how Truth library can be used in UI tests.
+****[lesson_14](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_14_assertion_libraries)**** - Using Truth Assertion library.
 
-#### [chapter15](https://github.com/Apress/android-espresso-revealed/tree/androidx-espresso-revealed/app/src/androidTest/java/com/example/android/architecture/blueprints/todoapp/test/chapter15)
-Contains code samples that were not covered in other chapters and Espresso testing tips which may increase your daily test writing productivity. It includes creating Parametrized tests, aggregating tests into Test Suites, using AndroidStudio Live templates in UI tests, setting SeekBar progress in Espresso UI tests and Espresso Drawable matchers topics.
-
+****[lesson_15](https://github.com/denyszelenchuk/discovering-espresso/tree/master/app/src/androidTest/java/com/example/todoapp/test/essentials/lesson_15_shell_commands)**** - Useful shell scripts.
