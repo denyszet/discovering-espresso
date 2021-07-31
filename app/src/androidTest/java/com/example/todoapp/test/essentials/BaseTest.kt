@@ -1,6 +1,7 @@
 package com.example.todoapp.test.essentials
 
 import android.Manifest
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import androidx.test.rule.GrantPermissionRule
@@ -14,20 +15,8 @@ import org.junit.runner.RunWith
 open class BaseTest {
 
     /**
-     * Provided activity will be launched before each test.
+     * Selected activity will be launched before each test.
      */
     @get:Rule
-    var activityTestRule = ActivityTestRule(TasksActivity::class.java)
-
-    /**
-     * The chain of rules where outerRule is the starting point.
-     * Allows having dependencies between rules.
-     */
-    @get:Rule
-    var ruleChain: RuleChain = RuleChain
-            .outerRule(GrantPermissionRule.grant(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.CAMERA))
-            .around(TestName())
+    var activityScenarioRule = ActivityScenarioRule(TasksActivity::class.java)
 }
