@@ -8,6 +8,7 @@ import android.widget.PopupWindow
 import androidx.test.espresso.Root
 import androidx.test.espresso.matcher.RootMatchers.*
 import androidx.test.espresso.matcher.RootMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withText
 
 /**
@@ -36,7 +37,7 @@ class RootMatchersViewMatchersTest : BaseTest() {
      */
     @Test
     fun rootMatchersIsDialog() {
-        onView(withText(R.string.name_hint)).inRoot(isDialog())
+        onView(withHint(R.string.name_hint)).inRoot(isDialog())
     }
 
     /**

@@ -25,8 +25,8 @@ object Utils {
      */
     fun getStringFromTestResource(resourceId: Int): String {
         return InstrumentationRegistry.getInstrumentation().context
-                .resources
-                .getString(resourceId)
+            .resources
+            .getString(resourceId)
     }
 
     /**
@@ -34,12 +34,12 @@ object Utils {
      *
      * @return Null may be returned in case no activity is found in this state.
      */
-    fun getActivityInStage(stage: Stage): FragmentActivity? {
+    private fun getActivityInStage(stage: Stage): FragmentActivity? {
         val currentActivity = arrayOfNulls<FragmentActivity>(1)
         InstrumentationRegistry.getInstrumentation().runOnMainSync {
             val activities = ActivityLifecycleMonitorRegistry
-                    .getInstance()
-                    .getActivitiesInStage(stage)
+                .getInstance()
+                .getActivitiesInStage(stage)
             val iterator = activities.iterator()
 
             if (iterator.hasNext()) {

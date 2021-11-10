@@ -26,9 +26,9 @@ class ViewActionsKotlinDslTest : BaseTest() {
     private val toolbarFilter = viewWithId(menu_filter)
     private val todoTitle = viewWithId(todo_title)
     private val activeFilterOption =
-            onView(allOf(withId(title), withText("Active")))
+        onView(allOf(withId(title), withText("Active")))
     private val completedFilterOption =
-            onView(allOf(withId(title), withText("Completed")))
+        onView(allOf(withId(title), withText("Completed")))
 
     @Before
     fun setUp() {

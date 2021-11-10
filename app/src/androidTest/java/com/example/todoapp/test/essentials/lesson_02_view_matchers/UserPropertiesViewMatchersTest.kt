@@ -31,7 +31,7 @@ class UserPropertiesViewMatchersTest : BaseTest() {
      */
     @Test
     fun userPropertiesWithText() {
-        onView(withText("You have no active TO-DOs!"))
+        onView(withText("You have no TO-DOs!"))
         onView(withText(R.string.no_tasks_all))
     }
 

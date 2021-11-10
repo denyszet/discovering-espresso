@@ -21,9 +21,12 @@ class CombiningHamcrestMatchersTest : BaseTest() {
      */
     @Test
     fun objectMatcherAllOf() {
-        onView(allOf(
+        onView(
+            allOf(
                 withId(R.id.todo_title),
-                withText("item 1")))
+                withText("item 1")
+            )
+        )
     }
 
     /**
@@ -31,8 +34,11 @@ class CombiningHamcrestMatchersTest : BaseTest() {
      */
     @Test
     fun objectMatcherAnyOf() {
-        onView(anyOf(
+        onView(
+            anyOf(
                 instanceOf(FloatingActionButton::class.java),
-                withId(R.id.fab_edit_task_done)))
+                withId(R.id.fab_edit_task_done)
+            )
+        )
     }
 }

@@ -2,6 +2,7 @@ package com.example.todoapp.test.essentials.lesson_04_view_actions
 
 import android.view.KeyEvent
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.action.ViewActions
@@ -27,8 +28,8 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText("Paste")))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
     }
 
     @Test
@@ -36,8 +37,8 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
     }
 
@@ -46,8 +47,8 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
 
         onView(withId(R.id.add_task_description)).perform(longClick())
@@ -59,8 +60,8 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
         onView(withId(R.id.add_task_description)).perform(longClick())
         onView(withId(R.id.add_task_description)).perform(pressKey(KeyEvent.KEYCODE_PASTE))
@@ -74,13 +75,14 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
         onView(withId(R.id.add_task_description))
-                .perform(
-                        longClick(),
-                        pressKey(KeyEvent.KEYCODE_PASTE))
+            .perform(
+                longClick(),
+                pressKey(KeyEvent.KEYCODE_PASTE)
+            )
 
         onView(withId(R.id.add_task_description)).perform(closeSoftKeyboard())
         onView(withId(R.id.fab_edit_task_done)).perform(click())
@@ -91,14 +93,15 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
         onView(withId(R.id.add_task_description))
-                .perform(
-                        longClick(),
-                        pressKey(KeyEvent.KEYCODE_PASTE),
-                        pressBack())
+            .perform(
+                longClick(),
+                pressKey(KeyEvent.KEYCODE_PASTE),
+                pressBack()
+            )
         onView(withId(R.id.fab_edit_task_done)).perform(click())
         onView(withId(R.id.todo_complete)).perform(click())
 
@@ -111,14 +114,15 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title)).perform(longClick())
         onView(allOf(instanceOf(AppCompatTextView::class.java), withText(android.R.string.paste)))
-                .inRoot(isPlatformPopup())
-                .perform(click())
+            .inRoot(isPlatformPopup())
+            .perform(click())
         onView(withId(R.id.add_task_title)).perform(pressImeActionButton())
         onView(withId(R.id.add_task_description))
-                .perform(
-                        longClick(),
-                        pressKey(KeyEvent.KEYCODE_PASTE),
-                        pressBack())
+            .perform(
+                longClick(),
+                pressKey(KeyEvent.KEYCODE_PASTE),
+                pressBack()
+            )
         onView(withId(R.id.fab_edit_task_done)).perform(click())
         onView(withId(R.id.todo_complete)).perform(click())
         onView(withId(R.id.fab_add_task)).perform(pressMenuKey())

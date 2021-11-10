@@ -24,31 +24,46 @@ class GesturesViewActionsTest : BaseTest() {
 
         onView(withId(R.id.fab_add_task)).perform(click())
         onView(withId(R.id.add_task_title))
-                .perform(typeText(toDoTitle), closeSoftKeyboard())
+            .perform(typeText(toDoTitle), closeSoftKeyboard())
         onView(withId(R.id.add_task_description))
-                .perform(typeText(toDoDescription), closeSoftKeyboard())
+            .perform(typeText(toDoDescription))
 
+        // scrollTo() ViewAction
         onView(withId(R.id.makePhoto)).perform(scrollTo(), click())
-
-        onView(withId(R.id.picture)).perform(click())
-        onView(withId(R.id.fab_edit_task_done)).perform(click())
     }
 
     @Test
     fun gesturesViewActionsSwipeRightLeft() {
-        onView(allOf(instanceOf(ImageButton::class.java), withParent(withId(R.id.toolbar))))
-        onView(allOf(withId(R.id.design_menu_item_text), withText(R.string.settings_title))).perform(click())
+        onView(
+            allOf(
+                instanceOf(ImageButton::class.java),
+                withParent(withId(R.id.toolbar))
+            )
+        ).perform(click())
+        onView(
+            allOf(
+                withId(R.id.design_menu_item_text),
+                withText(R.string.settings_title)
+            )
+        ).perform(click())
         onView(withText(R.string.pref_header_notifications)).perform(click())
 
+        // swipeRight() ViewAction
         onView(withId(android.R.id.switch_widget)).perform(swipeRight()).check(matches(isChecked()))
-        onView(withId(android.R.id.switch_widget)).perform(swipeLeft()).check(matches(not(isChecked())))
+
+        // swipeLeft() ViewAction
+        onView(withId(android.R.id.switch_widget)).perform(swipeLeft())
+            .check(matches(not(isChecked())))
     }
 
     @Test
     fun gesturesViewActionsSwipeUpDown() {
         10.generateToDos()
 
+        // swipeDown() ViewAction - cn be used for ex. as swipe down to refresh
         onView(withId(R.id.tasksContainer)).perform(swipeDown())
+
+        // swipeUp() ViewAction
         onView(withId(R.id.tasksContainer)).perform(swipeUp())
     }
 
@@ -58,9 +73,9 @@ class GesturesViewActionsTest : BaseTest() {
             val toDoDescription = "description $i"
             onView(withId(R.id.fab_add_task)).perform(click())
             onView(withId(R.id.add_task_title))
-                    .perform(typeText(toDoTitle), closeSoftKeyboard())
+                .perform(typeText(toDoTitle), closeSoftKeyboard())
             onView(withId(R.id.add_task_description))
-                    .perform(typeText(toDoDescription), closeSoftKeyboard())
+                .perform(typeText(toDoDescription), closeSoftKeyboard())
             onView(withId(R.id.fab_edit_task_done)).perform(click())
         }
     }

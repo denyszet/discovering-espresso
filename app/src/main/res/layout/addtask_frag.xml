@@ -38,7 +38,8 @@
             android:tag="@string/title_hint"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:inputType="text" />
+            android:inputType="textFilter"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/add_task_description"
@@ -47,9 +48,10 @@
             android:gravity="top"
             android:hint="@string/description_hint"
             android:tag="@string/description_hint"
-            android:inputType="textMultiLine"
+            android:inputType="textFilter|textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:importantForAutofill="no" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

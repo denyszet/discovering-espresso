@@ -19,15 +19,15 @@ class StringHamcrestMatchersTest : BaseTest() {
      */
     @Test
     fun objectMatcherIsEmptyString() {
-        onView(withText(isEmptyString()))
+        onView(withText(`is`(emptyString())))
     }
 
     /**
      * [Matchers.isEmptyOrNullString] matches [String] when it is null or has zero length.
      */
     @Test
-    fun objectMatcherNot() {
-        onView(withText(isEmptyOrNullString()))
+    fun objectMatcherEmptyOrNullString() {
+        onView(withText(`is`(emptyOrNullString())))
     }
 
     /**
@@ -48,11 +48,11 @@ class StringHamcrestMatchersTest : BaseTest() {
     }
 
     /**
-     * [Matchers.equalToIgnoringWhiteSpace] matches [String] when it is equal to the specified
+     * [Matchers.equalToCompressingWhiteSpace] matches [String] when it is equal to the specified
      * expectedString, ignoring white spaces.
      */
     @Test
-    fun stringHamcrestMatchersEqualToIgnoringWhiteSpace() {
-        onView(withText(equalToIgnoringWhiteSpace("item     1")))
+    fun stringHamcrestMatchersEqualToCompressingWhiteSpace() {
+        onView(withText(equalToCompressingWhiteSpace("item     1")))
     }
 }

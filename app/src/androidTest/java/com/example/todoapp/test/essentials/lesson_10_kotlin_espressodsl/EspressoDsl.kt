@@ -45,25 +45,25 @@ fun ViewInteraction.closeKeyboard(): ViewInteraction = perform(closeSoftKeyboard
  * [ViewInteraction] extensions
  */
 fun ViewInteraction.checkHasChildByText(text: String): ViewInteraction =
-        check(ViewAssertions.matches(withChild(withText(text))))
+    check(ViewAssertions.matches(withChild(withText(text))))
 
 fun ViewInteraction.checkHasChildByText(id: Int): ViewInteraction =
-        check(ViewAssertions.matches(withChild(withText(id))))
+    check(ViewAssertions.matches(withChild(withText(id))))
 
 fun ViewInteraction.checkHasChildById(id: Int): ViewInteraction =
-        check(ViewAssertions.matches(withChild(withId(id))))
+    check(ViewAssertions.matches(withChild(withId(id))))
 
 fun ViewInteraction.checkDisplayed(): ViewInteraction =
-        check(ViewAssertions.matches(isDisplayed()))
+    check(ViewAssertions.matches(isDisplayed()))
 
 fun ViewInteraction.checkNotDisplayed(): ViewInteraction =
-        check(ViewAssertions.matches(not(isDisplayed())))
+    check(ViewAssertions.matches(not(isDisplayed())))
 
 fun ViewInteraction.checkDoesNotExist(): ViewInteraction =
-        check(ViewAssertions.doesNotExist())
+    check(ViewAssertions.doesNotExist())
 
 fun ViewInteraction.checkMatches(matcher: Matcher<View>): ViewInteraction =
-        check(ViewAssertions.matches(matcher))
+    check(ViewAssertions.matches(matcher))
 
 /**
  * Expand function for web view test case.
@@ -73,7 +73,11 @@ fun ViewInteraction.checkMatches(matcher: Matcher<View>): ViewInteraction =
  * @param milliseconds - milliseconds to sleep
  * @param count - amount of times {@link KeyEvent} should be executed
  */
-fun ViewInteraction.sleepAndPressKey(key: Int, milliseconds: Long, count: Int = 1): ViewInteraction {
+fun ViewInteraction.sleepAndPressKey(
+    key: Int,
+    milliseconds: Long,
+    count: Int = 1
+): ViewInteraction {
     for (i in 1..count) {
         /**
          * Having Thread.sleep() in tests is a bad practice.
@@ -98,13 +102,13 @@ fun ViewInteraction.allOf(vararg matcher: Matcher<View>): ViewInteraction {
 fun DataInteraction.click(): ViewInteraction = perform(ViewActions.click())
 
 fun DataInteraction.checkDisplayed(): ViewInteraction =
-        check(ViewAssertions.matches(isDisplayed()))
+    check(ViewAssertions.matches(isDisplayed()))
 
 fun DataInteraction.checkWithText(text: String): ViewInteraction =
-        check(ViewAssertions.matches(withText(text)))
+    check(ViewAssertions.matches(withText(text)))
 
 fun DataInteraction.checkMatches(matcher: Matcher<View>): ViewInteraction =
-        check(ViewAssertions.matches(matcher))
+    check(ViewAssertions.matches(matcher))
 
 fun DataInteraction.childById(id: Int): DataInteraction = onChildView(withId(id))
 
@@ -113,15 +117,17 @@ fun DataInteraction.inAdapterById(id: Int): DataInteraction = inAdapterView(with
 /**
  * [RecyclerViewActions] extensions
  */
-fun ViewInteraction.actionAtPosition(position: Int,
-                                     action: ViewAction): ViewInteraction =
-        perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(position, action))
+fun ViewInteraction.actionAtPosition(
+    position: Int,
+    action: ViewAction
+): ViewInteraction =
+    perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(position, action))
 
 fun ViewInteraction.scrollToPosition(position: Int): ViewInteraction =
-        perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
+    perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(position))
 
 fun ViewInteraction.scrollTo(matcher: Matcher<View>): ViewInteraction =
-        perform(RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(matcher))
+    perform(RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(matcher))
 
 /**
  * [ViewMatchers]

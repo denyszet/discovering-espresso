@@ -6,9 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import com.example.todoapp.test.essentials.BaseTest
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.hamcrest.CoreMatchers
-import org.hamcrest.CoreMatchers.instanceOf
-import org.hamcrest.CoreMatchers.`is`
-import org.hamcrest.CoreMatchers.not
+import org.hamcrest.CoreMatchers.*
 import org.junit.Test
 
 /**
@@ -17,11 +15,20 @@ import org.junit.Test
 class GeneralPurposeHamcrestMatchersTest : BaseTest() {
 
     /**
-     * [CoreMatchers.is] decorates another Matcher, retaining its behaviour.
+     * [CoreMatchers.is] decorates is(equalTo(x)) Matcher, retaining its behaviour.
      */
     @Test
     fun generalPurposeMatcherIs() {
         onView(withClassName(`is`(FloatingActionButton::class.java.canonicalName)))
+    }
+
+    /**
+     * [CoreMatchers.equalTo] matches when the examined object is logically equal to
+     * the specified operand.
+     */
+    @Test
+    fun generalPurposeMatcherEqualTo() {
+        onView(withClassName(equalTo(FloatingActionButton::class.java.canonicalName)))
     }
 
     /**

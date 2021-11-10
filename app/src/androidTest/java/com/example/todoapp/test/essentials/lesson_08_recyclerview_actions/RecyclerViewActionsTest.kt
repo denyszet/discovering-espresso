@@ -24,14 +24,14 @@ class RecyclerViewActionsTest : BaseTest() {
     fun addNewToDosChained() {
         12.generateToDos()
         onView(withId(tasks_list))
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(10, scrollTo()))
-                .perform(scrollToPosition<RecyclerView.ViewHolder>(1))
-                .perform(scrollToPosition<RecyclerView.ViewHolder>(11))
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(11, click()))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(10, scrollTo()))
+            .perform(scrollToPosition<RecyclerView.ViewHolder>(1))
+            .perform(scrollToPosition<RecyclerView.ViewHolder>(11))
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(11, click()))
         Espresso.pressBack()
         onView(withId(tasks_list))
-                // Position 1 but to-do item is the second in a list. Starting from zero.
-                .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
+            // Position 1 but to-do item is the second in a list. Starting from zero.
+            .perform(actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
         onView(withId(task_detail_title)).check(matches(withText(item2)))
     }
 
@@ -51,9 +51,9 @@ class RecyclerViewActionsTest : BaseTest() {
             val toDoDescription = "description $i"
             onView(withId(fab_add_task)).perform(click())
             onView(withId(add_task_title))
-                    .perform(typeText(toDoTitle), closeSoftKeyboard())
+                .perform(typeText(toDoTitle), closeSoftKeyboard())
             onView(withId(add_task_description))
-                    .perform(typeText(toDoDescription), closeSoftKeyboard())
+                .perform(typeText(toDoDescription), closeSoftKeyboard())
             onView(withId(fab_edit_task_done)).perform(click())
         }
     }

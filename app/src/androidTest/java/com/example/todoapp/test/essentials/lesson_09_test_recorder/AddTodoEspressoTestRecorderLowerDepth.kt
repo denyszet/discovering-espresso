@@ -28,23 +28,28 @@ class AddTodoEspressoTestRecorderLowerDepth {
     @Test
     fun addsTodoEspressoTestRecorderLowerDepth() {
         val floatingActionButton = onView(
-                allOf(withId(R.id.fab_add_task), isDisplayed()))
+            allOf(withId(R.id.fab_add_task), isDisplayed())
+        )
         floatingActionButton.perform(click())
 
         val appCompatEditText = onView(
-                withId(R.id.add_task_title))
+            withId(R.id.add_task_title)
+        )
         appCompatEditText.perform(scrollTo(), replaceText("item 1"), closeSoftKeyboard())
 
         val appCompatEditText2 = onView(
-                withId(R.id.add_task_description))
+            withId(R.id.add_task_description)
+        )
         appCompatEditText2.perform(scrollTo(), replaceText("description 1"), closeSoftKeyboard())
 
         val floatingActionButton2 = onView(
-                allOf(withId(R.id.fab_edit_task_done), isDisplayed()))
+            allOf(withId(R.id.fab_edit_task_done), isDisplayed())
+        )
         floatingActionButton2.perform(click())
 
         val textView = onView(
-                allOf(withId(R.id.todo_title), withText("item 1"), isDisplayed()))
+            allOf(withId(R.id.todo_title), withText("item 1"), isDisplayed())
+        )
         textView.check(matches(withText("item 1")))
     }
 }

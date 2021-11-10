@@ -34,59 +34,91 @@ class AddTodoEspressoTestRecorder {
     @Test
     fun addsTodoEspressoTestRecorder() {
         val floatingActionButton = onView(
-                allOf(withId(R.id.fab_add_task), withContentDescription("Add todo"),
+            allOf(
+                withId(R.id.fab_add_task), withContentDescription("Add todo"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.coordinatorLayout),
                         childAtPosition(
-                                allOf(withId(R.id.coordinatorLayout),
-                                        childAtPosition(
-                                                withClassName(`is`("android.widget.LinearLayout")),
-                                                1)),
-                                1),
-                        isDisplayed()))
+                            withClassName(`is`("android.widget.LinearLayout")),
+                            1
+                        )
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
         floatingActionButton.perform(click())
 
         val appCompatEditText = onView(
-                allOf(withId(R.id.add_task_title),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.add_task_scroll_view),
-                                        0),
-                                0)))
+            allOf(
+                withId(R.id.add_task_title),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.add_task_scroll_view),
+                        0
+                    ),
+                    0
+                )
+            )
+        )
         appCompatEditText.perform(scrollTo(), replaceText("item 1"), closeSoftKeyboard())
 
         val appCompatEditText2 = onView(
-                allOf(withId(R.id.add_task_description),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.add_task_scroll_view),
-                                        0),
-                                1)))
+            allOf(
+                withId(R.id.add_task_description),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.add_task_scroll_view),
+                        0
+                    ),
+                    1
+                )
+            )
+        )
         appCompatEditText2.perform(scrollTo(), replaceText("description 1"), closeSoftKeyboard())
 
         val floatingActionButton2 = onView(
-                allOf(withId(R.id.fab_edit_task_done), withContentDescription("Floating action button"),
+            allOf(
+                withId(R.id.fab_edit_task_done), withContentDescription("Floating action button"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.coordinatorLayout),
                         childAtPosition(
-                                allOf(withId(R.id.coordinatorLayout),
-                                        childAtPosition(
-                                                withClassName(`is`("android.widget.LinearLayout")),
-                                                1)),
-                                1),
-                        isDisplayed()))
+                            withClassName(`is`("android.widget.LinearLayout")),
+                            1
+                        )
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
         floatingActionButton2.perform(click())
 
         val textView = onView(
-                allOf(withId(R.id.todo_title), withText("item 1"),
+            allOf(
+                withId(R.id.todo_title), withText("item 1"),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.todo_item),
                         childAtPosition(
-                                allOf(withId(R.id.todo_item),
-                                        childAtPosition(
-                                                withId(R.id.tasks_list),
-                                                0)),
-                                1),
-                        isDisplayed()))
+                            withId(R.id.tasks_list),
+                            0
+                        )
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
         textView.check(matches(withText("item 1")))
     }
 
     private fun childAtPosition(
-            parentMatcher: Matcher<View>, position: Int): Matcher<View> {
+        parentMatcher: Matcher<View>, position: Int
+    ): Matcher<View> {
 
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {

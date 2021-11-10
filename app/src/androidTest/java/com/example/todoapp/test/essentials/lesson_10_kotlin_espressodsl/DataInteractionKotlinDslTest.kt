@@ -20,7 +20,8 @@ import org.junit.Test
 class DataInteractionKotlinDslTest : BaseTest() {
 
     //ViewInteractions and DataInteractions used in tests
-    private val settingsMenuItem = onView(allOf(withId(design_menu_item_text), withText(settings_title)))
+    private val settingsMenuItem =
+        onView(allOf(withId(design_menu_item_text), withText(settings_title)))
     private val settingsList = dataInstanceOf(PreferenceActivity.Header::class.java)
     private val shareEmailItem = onData(withKey("email_edit_text"))
     private val emailEditText = onView(withId(edit))
@@ -31,20 +32,20 @@ class DataInteractionKotlinDslTest : BaseTest() {
         openDrawer()
         settingsMenuItem.click()
         settingsList
-                .inAdapterById(list)
-                .atPosition(0)
-                .childById(title)
-                .checkWithText("General")
-                .click()
+            .inAdapterById(list)
+            .atPosition(0)
+            .childById(title)
+            .checkWithText("General")
+            .click()
         shareEmailItem
-                .inAdapterView(allOf(withId(list), parentWithId(list_container)))
-                .checkDisplayed()
-                .click()
+            .inAdapterView(allOf(withId(list), parentWithId(list_container)))
+            .checkDisplayed()
+            .click()
         emailEditText.replace("sample@ema.il")
         okDialogButton.click()
         shareEmailItem
-                .inAdapterView(allOf(withId(list), parentWithId(list_container)))
-                .childById(summary)
-                .checkWithText("sample@ema.il")
+            .inAdapterView(allOf(withId(list), parentWithId(list_container)))
+            .childById(summary)
+            .checkWithText("sample@ema.il")
     }
 }

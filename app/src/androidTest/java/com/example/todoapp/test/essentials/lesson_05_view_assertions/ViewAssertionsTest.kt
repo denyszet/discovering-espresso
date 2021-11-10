@@ -1,17 +1,19 @@
 package com.example.todoapp.test.essentials.lesson_05_view_assertions
 
-import android.widget.Spinner
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import com.example.android.architecture.blueprints.todoapp.R
 import com.example.todoapp.test.essentials.BaseTest
+import org.hamcrest.CoreMatchers.startsWith
 import org.junit.Test
 
 class ViewAssertionsTest : BaseTest() {
 
     /**
-     * View matcher that matches a [Spinner] based on selected item.
+     * doesNotExist() asserts that view does not exist in view hierarchy.
+     * Don't mess it up with not(isDisplayed()).
      */
     @Test
     fun doesNotExistAssertion() {
@@ -19,10 +21,12 @@ class ViewAssertionsTest : BaseTest() {
     }
 
     /**
-     * View matcher that matches a [Spinner] based on selected item.
+     * matches() ViewAssertion asserts that view with a given matcher exists in a view hierarchy.
      */
     @Test
     fun matchesAssertion() {
-        onView(withText("")).check(matches(isDisplayed()))
+        onView(withText(R.string.no_tasks_all)).check(matches(isDisplayed()))
+        onView(withId(R.id.fab_add_task)).check(matches(isClickable()))
+        onView(withText(startsWith("Visit my page:"))).check(matches(hasLinks()))
     }
 }

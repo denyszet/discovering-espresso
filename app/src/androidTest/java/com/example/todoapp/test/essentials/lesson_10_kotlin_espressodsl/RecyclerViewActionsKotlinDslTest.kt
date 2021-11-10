@@ -23,13 +23,13 @@ class RecyclerViewActionsKotlinDslTest : BaseTest() {
     fun addNewToDosChained() {
         12.generateToDos()
         todoList
-                .actionAtPosition(10, scrollTo())
-                .scrollToPosition(1)
-                .scrollToPosition(11)
-                .actionAtPosition(11, click())
+            .actionAtPosition(10, scrollTo())
+            .scrollToPosition(1)
+            .scrollToPosition(11)
+            .actionAtPosition(11, click())
         Espresso.pressBack()
         todoList
-                .scrollToPosition(1)
+            .scrollToPosition(1)
         viewWithText("item 2").click()
     }
 
