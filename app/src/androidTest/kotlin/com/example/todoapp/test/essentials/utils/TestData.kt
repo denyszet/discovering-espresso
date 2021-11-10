@@ -1,4 +1,4 @@
-package com.example.todoapp.test.essentials.utils;
+package com.example.todoapp.test.essentials.utils
 
 object ToDoItem {
 

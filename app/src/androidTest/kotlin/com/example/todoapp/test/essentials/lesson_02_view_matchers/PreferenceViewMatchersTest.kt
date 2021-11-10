@@ -1,5 +1,4 @@
 @file:Suppress("DEPRECATION")
-
 package com.example.todoapp.test.essentials.lesson_02_view_matchers
 
 import com.example.android.architecture.blueprints.todoapp.R
