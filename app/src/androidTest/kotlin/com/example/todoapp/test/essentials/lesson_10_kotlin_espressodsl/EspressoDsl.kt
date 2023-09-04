@@ -89,6 +89,22 @@ fun ViewInteraction.sleepAndPressKey(
     return this
 }
 
+fun ViewInteraction.pressKeyAndSleep(
+    key: Int,
+    milliseconds: Long,
+    count: Int = 1
+): ViewInteraction {
+    for (i in 1..count) {
+        /**
+         * Having Thread.sleep() in tests is a bad practice.
+         * Here we are using it just to solve specific issue and nothing more.
+         */
+        perform(pressKey(key))
+        Thread.sleep(milliseconds)
+    }
+    return this
+}
+
 /**
  * Aggregated matchers
  */

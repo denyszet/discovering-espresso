@@ -18,6 +18,7 @@ import androidx.test.espresso.web.webdriver.Locator
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.todoapp.test.essentials.BaseTest
 import com.example.todoapp.test.essentials.lesson_10_kotlin_espressodsl.click
+import com.example.todoapp.test.essentials.lesson_10_kotlin_espressodsl.pressKeyAndSleep
 import com.example.todoapp.test.essentials.lesson_10_kotlin_espressodsl.sleepAndPressKey
 import com.example.todoapp.test.essentials.utils.CommonElements.openDrawer
 import org.hamcrest.CoreMatchers.*
@@ -163,12 +164,13 @@ class WebViewTest : BaseTest() {
             // Send TAB keys as many times as needed to reach the "select".
             .sleepAndPressKey(KeyEvent.KEYCODE_TAB, 500, 6)
             // Send SPACE key to expand "select".
-            .perform(ViewActions.pressKey(KeyEvent.KEYCODE_SPACE))
+            .pressKeyAndSleep(KeyEvent.KEYCODE_SPACE, 500)
+
         /**
          * At this point android platform popup is shown.
          * Use Espresso native methods to select item from the list.
          */
-        onView(withText("Item 3")).click()
+        onView(allOf(withId(android.R.id.text1), withText("Item 3"))).perform(click())
         onWebView()
             // Check that text from select list is set into the label.
             .withElement(findElement(Locator.ID, "selection_result"))
