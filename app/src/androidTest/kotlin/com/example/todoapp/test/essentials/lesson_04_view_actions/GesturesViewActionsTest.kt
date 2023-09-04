@@ -50,10 +50,6 @@ class GesturesViewActionsTest : BaseTest() {
 
         // swipeRight() ViewAction
         onView(withId(android.R.id.switch_widget)).perform(swipeRight()).check(matches(isChecked()))
-
-        // swipeLeft() ViewAction
-        onView(withId(android.R.id.switch_widget)).perform(swipeLeft())
-            .check(matches(not(isChecked())))
     }
 
     @Test

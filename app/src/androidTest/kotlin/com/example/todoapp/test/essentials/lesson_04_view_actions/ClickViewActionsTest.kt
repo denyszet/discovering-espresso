@@ -1,22 +1,39 @@
 package com.example.todoapp.test.essentials.lesson_04_view_actions
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.view.KeyEvent
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.matcher.RootMatchers.isPlatformPopup
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.platform.app.InstrumentationRegistry
 import com.example.android.architecture.blueprints.todoapp.R
 import com.example.todoapp.test.essentials.BaseTest
-import org.hamcrest.CoreMatchers.*
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.instanceOf
+import org.junit.Before
 import org.junit.Test
 
 /**
  * Demonstrates Espresso click [ViewActions] usage.
  */
 class ClickViewActionsTest : BaseTest() {
+
+    @Before
+    fun setClipboardText() {
+        val clipboard =
+            InstrumentationRegistry.getInstrumentation().targetContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip = ClipData.newPlainText(
+            "espresso essentials",
+            "text to paste ${System.currentTimeMillis()}"
+        )
+        clipboard.setPrimaryClip(clip)
+    }
 
     @Test
     fun clickViewActionsClick() {
@@ -99,8 +116,7 @@ class ClickViewActionsTest : BaseTest() {
         onView(withId(R.id.add_task_description))
             .perform(
                 longClick(),
-                pressKey(KeyEvent.KEYCODE_PASTE),
-                pressBack()
+                pressKey(KeyEvent.KEYCODE_PASTE)
             )
         onView(withId(R.id.fab_edit_task_done)).perform(click())
         onView(withId(R.id.todo_complete)).perform(click())
